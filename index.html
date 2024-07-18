@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <div class="Registrationform">
+            <h1>Registration form</h1>
+            <form id="form">
+                <label>Name:-</label>
+                <input type="text" id="Name" name="name" placeholder="Enter your name" required><br>
+                <label>Email:-</label>
+                <input type="email" id="Email" name="email" placeholder="Enter your email" required><br>
+                <label>Password:-</label>
+                <input type="password" id="Password" name="password" placeholder="Enter your password" required><br>
+                <label>Mobile:-</label>
+                <input type="number" id="Mobile" name="mobile" placeholder="Enter your mobile number" required><br>
+                <div class="button"><button id="Register">Register</button></div>
+                </form>
+                <h2>Already Registered? <a href="Loginform.html">Login form</a></h2>          
+              
+        </div>
+       
+        
+    </body>
+
+    <script>
+        let arr=JSON.parse(localStorage.getItem ("user"))||[]
+
+     let form=document.getElementById("form")
+    let Register=document.getElementById("Register")
+    Register.addEventListener("click",Userdata)
+     
+    Userdata()
+
+
+
+    function Userdata(e){
+        // e.preventDefault()
+        let obj={
+            name:document.getElementById("Name").value,
+            email:document.getElementById("Email").value,
+            password:document.getElementById("Password").value,
+            mobile:document.getElementById("Mobile").value,
+            }
+            arr.push(obj)
+            localStorage.setItem ("user",JSON.stringify(arr))
+            alert="Data Save"
+            form.reset()
+            console.log(arr)
+        }
+   
+
+    
+
+
+
+    </script>
+    
+</body>
+</html>

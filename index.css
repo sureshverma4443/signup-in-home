@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(https://e1.pxfuel.com/desktop-wallpaper/721/613/desktop-wallpaper-abstract-login-page.jpg);
+}
+
+.Registrationform{
+    border: 2px solid white;
+    width: 35%;
+    margin:1% auto;
+    height: 600px;
+    border-radius: 10px;
+}
+
+h1,h2{
+    text-align: center;
+    color: white;
+    font-family: cursive;
+}
+
+form{
+    color: white;
+    font-family: cursive;
+    margin: 5%;
+    font-size: 25px;
+
+}
+
+input{
+    width: 100%;
+    height: 33px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: large;
+    
+    
+    
+}
+input::placeholder{
+    color: white;
+    font-family: cursive;
+    padding: 3%;
+    font-size: 15px;
+    background: transparent;
+
+}
+.button{
+    margin: 5% auto;
+    text-align: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+#Register{
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    font-family: cursive;
+    font-size: 20px;
+
+}
+a{
+    color: chartreuse;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Loginform.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="Loginform">
+        <h1>Login form</h1>
+        <form id="loginForm">
+            <label>Email:-</label>
+            <input type="email" id="Email" name="email" placeholder="Enter your email" required><br>
+            <label>Password:-</label>
+            <input type="password" id="Password" name="password" placeholder="Enter your password" required><br>
+            <div class="button"><button type="submit" id="Login">Login</button></div>
+        </form>
+        <h2>Don't have an account? <a href="index.html">Register</a></h2>          
+    </div>
+
+    <script>
+       
+       let arr=JSON.parse(localStorage.getItem("user"))||[]
+
+       let Email=document.getElementById("Email")
+       let Password=document.getElementById("Password")
+
+       let Login=document.getElementById("Login")
+       Login.addEventListener("click",logindata)
+
+
+       function logindata() {
+            let userDetails = {
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("Password").value
+            };
+
+            let value = arr.find((user) =>
+                user.email === userDetails.Email &&
+                user.password === userDetails.Password
+            );
+            if (value) {
+                window.location.href="Home.html"               
+                alert("Login Done");
+            } else {
+                alert("data not found")
+            }
+
+       }
+
+
+
+
+    </script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Home.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/8da29d84916351.Y3JvcCwzMDE5LDIzNjIsODIsMA.jpg">
+        </div>
+        <div class="link">
+            <a href="Loginform.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://www.google.com/">Google</a>
+        </div>
+        <div id="username">
+            <span id="user">Guest</span>
+        </div>
+    </nav>
+    <div class="herosection">
+        <img src="https://as1.ftcdn.net/v2/jpg/06/57/86/06/1000_F_657860698_QCyEqAPQ2K1aFgRMycUQq2FI3M5vwMuC.jpg">
+    </div>
+    <div id="Productpage" class="Productpage"></div>
+
+    <script>
+        let Apidata = []
+        let arr = JSON.parse(localStorage.getItem("user")) || []
+        console.log(arr)
+        let user = document.getElementById("user")
+        user.innerHTML = `${arr.name}`
+
+        async function getdata() {
+            try {
+                let res = await axios.get("https://fakestoreapi.com/products")
+                Apidata = res.data
+                displaydata(Apidata)
+            } catch (error) {
+                console.log("error", error)
+            }
+        }
+
+        function displaydata(Apidata) {
+            let Productpage = document.getElementById("Productpage")
+            Apidata.forEach((ele) => {
+                let div = document.createElement("div")
+                div.id = "card"
+
+                let h1 = document.createElement("h1")
+                h1.innerText = ele.title
+
+                let h2 = document.createElement("h2")
+                h2.innerText = `$${ele.price}`
+
+                let p = document.createElement("p")
+                p.innerText = ele.description
+
+                let category = document.createElement("p")
+                category.innerText = `Category: ${ele.category}`
+
+                let img = document.createElement("img")
+                img.src = ele.image
+                img.alt = ele.title
+
+                let rating = document.createElement("p")
+                rating.innerText = `Rating: ${ele.rating.rate} 
+                (${ele.rating.count} reviews)`
+
+                let btns = document.createElement("div")
+                btns.id = "btns"
+
+                let btn1 = document.createElement("button")
+                btn1.id = "btn1"
+                btn1.innerText = "Add to cart"
+
+                let btn2 = document.createElement("button")
+                btn2.id = "btn2"
+                btn2.innerText = "Buy Now"
+
+                btns.append(btn1, btn2)
+                div.append(h1, h2, p, category, img, rating, btns)
+                Productpage.append(div)
+            })
+        }
+        getdata()
+    </script>
+</body>
+</html>
